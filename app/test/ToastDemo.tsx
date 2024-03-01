@@ -11,7 +11,7 @@ type Props = {
 const ToastDemo = ({open, setOpen}: Props) => {
 
   return (
-    <Toast.Provider swipeDirection="right">
+    <Toast.Provider duration={2000} swipeDirection="right">
       <Toast.Root className="ToastRoot" open={open} onOpenChange={setOpen}>
         <div className=''>
           <Toast.Title className="ToastTitle">
