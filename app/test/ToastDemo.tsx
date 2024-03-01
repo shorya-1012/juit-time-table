@@ -3,12 +3,16 @@ import * as React from 'react';
 import * as Toast from '@radix-ui/react-toast';
 import './styles.css';
 
-const ToastDemo = () => {
-  const [open, setOpen] = React.useState(false);
+type Props = {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}
+
+const ToastDemo = ({open, setOpen}: Props) => {
 
   return (
     <Toast.Provider swipeDirection="right">
-      <Toast.Root className="ToastRoot" open={true} onOpenChange={setOpen}>
+      <Toast.Root className="ToastRoot" open={open} onOpenChange={setOpen}>
         <div className=''>
           <Toast.Title className="ToastTitle">
             <h1 className='text-red-500 font-semibold'>Sorry, No Data Found</h1>
