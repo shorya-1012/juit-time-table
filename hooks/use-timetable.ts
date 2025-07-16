@@ -1,15 +1,8 @@
+import { DATA } from "@/types";
 import { addToast } from "@heroui/toast";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { useEffect, useState } from "react";
-
-export type DATA = {
-  data: string[];
-  day: string;
-  time: string;
-  __v: number;
-  _id: number;
-};
 
 export function useTimetable(course: string | null, batch: string | null) {
   const [data, setData] = useState<DATA[]>();
@@ -35,7 +28,6 @@ export function useTimetable(course: string | null, batch: string | null) {
       try {
         const response = await axios.post("/api/get", { course });
         const data: DATA[] = response.data;
-        console.log(data, "Here");
         setData(data);
       } catch (error) {
         addToast({

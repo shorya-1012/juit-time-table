@@ -7,8 +7,8 @@ import {
   TableCell,
 } from "@heroui/table";
 import { Days, TimeSlots } from "@/config/data";
-import { DATA } from "@/hooks/use-timetable";
 import { findClassForBatch } from "@/lib/utils";
+import { DATA } from "@/types";
 
 type FullTimetableTableProps = {
   batch: string;
@@ -38,9 +38,8 @@ export function FullTimetableTable({ batch, data }: FullTimetableTableProps) {
                   {slot}
                 </TableCell>,
                 ...Days.map((day) => {
-                  const shortDay = day.slice(0, 3);
                   const entry = data.find(
-                    (item) => item.day === shortDay && item.time === slot,
+                    (item) => item.day === day && item.time === slot,
                   );
                   let classInfo = null;
                   if (entry && entry.data) {

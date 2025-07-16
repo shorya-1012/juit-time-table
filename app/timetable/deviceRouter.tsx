@@ -3,6 +3,7 @@ import { SmTimetable } from "@/components/sm-timetable";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTimetable } from "@/hooks/use-timetable";
 import { useSearchParams } from "next/navigation";
+import Loading from "../loading";
 
 export default function DeviceRouter() {
   const searchParams = useSearchParams();
@@ -13,7 +14,7 @@ export default function DeviceRouter() {
   const data = useTimetable(course, batch);
 
   const isMobile = useIsMobile();
-  if (isMobile == undefined || data == undefined) return <div>Loading</div>;
+  if (isMobile == undefined || data == undefined) return <Loading />;
   if (!batch || !course) return "Batch or Course not found";
 
   if (isMobile) {

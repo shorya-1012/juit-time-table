@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Days } from "@/config/data";
-import { DATA } from "@/hooks/use-timetable";
 import { Card, CardBody, CardHeader } from "@heroui/card";
 import { Select, SelectItem } from "@heroui/select";
 import { findClassForBatch } from "@/lib/utils";
+import { DATA } from "@/types";
 
 // EVEN IDK WTF I've WRITEN
 
@@ -19,9 +19,7 @@ export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
     return Days[jsDayIndex - 1];
   });
 
-  const todaySchedule = data.filter(
-    (entry) => entry.day === selectedDay.slice(0, 3),
-  );
+  const todaySchedule = data.filter((entry) => entry.day === selectedDay);
 
   const typeColors = {
     Lecture: "border-blue-500",

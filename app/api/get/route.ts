@@ -7,9 +7,7 @@ export async function POST(req: NextRequest) {
   try {
     await connectDB();
     const model = modelMap[course as keyof typeof modelMap];
-    console.log(model, course);
     const timetableEntries = await model.find().lean();
-    console.log(timetableEntries);
 
     return NextResponse.json(timetableEntries);
   } catch (err) {

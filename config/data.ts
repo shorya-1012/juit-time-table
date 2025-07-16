@@ -19,22 +19,14 @@ export const UpdatePageAlert = {
     "Please do not spom it , if you don't know the password and want to update it, you can mail us.",
 };
 export const DaysMapper = {
-  0: "MON",
-  1: "TUE",
-  2: "WED",
-  3: "THU",
-  4: "FRI",
-  5: "SAT",
+  0: "MONDAY",
+  1: "TUESDAY",
+  2: "WEDNESDAY",
+  3: "THURSDAY",
+  4: "FRIDAY",
+  5: "SATURDAY",
 };
 
-// export const DaysMapper = {
-//   0: "MONDAY",
-//   1: "TUESDAY",
-//   2: "WEDNESDAY",
-//   3: "THURSDAY",
-//   4: "FRIDAY",
-//   5: "SATURDAY",
-// };
 export const TimeMapper = {
   "0": "09:00 AM - 09:55 AM",
   "1": "10:00 AM - 10:55 AM",

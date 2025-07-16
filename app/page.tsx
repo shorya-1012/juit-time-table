@@ -5,9 +5,10 @@ import { Input } from "@heroui/input";
 import { Select, SelectItem } from "@heroui/select";
 import { FormEvent, useState } from "react";
 import { Button } from "@heroui/button";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 
 export default function Home() {
+  const SEM = process.env.NEXT_PUBLIC_SEM;
   const router = useRouter();
   const [data, setData] = useState({
     course: "",
@@ -37,10 +38,18 @@ export default function Home() {
 
       <Select
         isRequired
-        description="Even Semester"
+        description={SEM}
         size="sm"
         className="max-w-md"
         label="Select course"
+        disabledKeys={Courses.filter((_, index) => {
+          if (SEM === "ODD_SEM") {
+            return index % 2 === 1; // disables EVEN indices?
+          } else if (SEM === "EVEN_SEM") {
+            return index % 2 === 0; // disables ODD indices?
+          }
+          return false;
+        }).map((batch) => batch)}
         onChange={(e) =>
           setData((prev) => ({ ...prev, course: String(e.target.value) }))
         }
