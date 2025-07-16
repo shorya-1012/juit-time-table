@@ -1,5 +1,6 @@
 "use client";
 
+import { EyeFilledIcon, EyeSlashFilledIcon } from "@/components/icons";
 import { UpdatePageAlert } from "@/config/data";
 import { Alert } from "@heroui/alert";
 import { Button } from "@heroui/button";
@@ -14,6 +15,9 @@ import { useState } from "react";
 export default function Home() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => setIsVisible(!isVisible);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -73,17 +77,31 @@ export default function Home() {
       <Input
         isRequired
         description="Please do not spam"
+        type={isVisible ? "text" : "password"}
         size="sm"
         aria-label="Password"
         label="Enter Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        endContent={
+          <button
+            aria-label="toggle password visibility"
+            className="focus:outline-hidden"
+            type="button"
+            onClick={toggleVisibility}
+          >
+            {isVisible ? (
+              <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+            ) : (
+              <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+            )}
+          </button>
+        }
         classNames={{
           inputWrapper: "bg-default-100",
           input: "text-sm",
         }}
         className="max-w-md"
-        type="password"
       />
 
       <Alert

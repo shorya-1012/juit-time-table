@@ -28,4 +28,8 @@ export const modelMap = {
   "BTECH 6 SEM": createSchemaAndModel("BtechSem6"),
   "BTECH 7 SEM": createSchemaAndModel("BtechSem7"),
   "BTECH 8 SEM": createSchemaAndModel("BtechSem8"),
+  "MTECH-MSc 1 SEM": createSchemaAndModel("MtechMscSem1"),
+  "MTECH-MSc 2 SEM": createSchemaAndModel("MtechMscSem2"),
+  "MTECH-MSc 3 SEM, PhD2": createSchemaAndModel("MtechMscSem3"),
+  "MTECH-MSc 4 SEM, PhD2": createSchemaAndModel("MtechMscSem4"),
 };

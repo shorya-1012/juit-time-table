@@ -23,7 +23,7 @@ export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
 
   const typeColors = {
     Lecture: "border-blue-500",
-    Practicle: "border-green-500",
+    Practical: "border-green-500",
     Tutorial: "border-yellow-500",
   };
 
@@ -71,7 +71,7 @@ export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
                 <strong>Type:</strong>{" "}
                 <span className="capitalize">
                   {classInfo.type} {classInfo.type === "Lecture" && "📘"}
-                  {classInfo.type === "Practicle" && "🧪"}
+                  {classInfo.type === "Practical" && "🧪"}
                   {classInfo.type === "Tutorial" && "📝"}
                 </span>
               </p>

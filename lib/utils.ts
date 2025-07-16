@@ -1,5 +1,5 @@
 type ClassInfo = {
-  type: "Lecture" | "Practicle" | "Tutorial";
+  type: "Lecture" | "Practical" | "Tutorial";
   courseCode: string;
   batches: string[];
   coordinator: string;
@@ -10,7 +10,7 @@ type ClassInfo = {
 // Const assertion ensures narrow types
 const typeMap = {
   L: "Lecture",
-  P: "Practicle",
+  P: "Practical",
   T: "Tutorial",
 } as const;
 
