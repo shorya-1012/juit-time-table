@@ -11,6 +11,7 @@ export function useTimetable(course: string | null, batch: string | null) {
   useEffect(() => {
     if (!course || !batch) {
       addToast({
+        color: "danger",
         title: "Missing Data",
         description: "Please provide both course and batch.",
         timeout: 3000,
@@ -31,6 +32,7 @@ export function useTimetable(course: string | null, batch: string | null) {
         setData(data);
       } catch (error) {
         addToast({
+          color: "danger",
           title: "Error",
           description: "Failed to fetch timetable. Redirecting...",
           timeout: 3000,

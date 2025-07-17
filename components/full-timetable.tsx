@@ -6,6 +6,8 @@ import {
   TableRow,
   TableCell,
 } from "@heroui/table";
+import { Card, CardBody, CardHeader } from "@heroui/card";
+
 import { Days, TimeSlots } from "@/config/data";
 import { findClassForBatch } from "@/lib/utils";
 import { DATA } from "@/types";
@@ -31,37 +33,34 @@ export function FullTimetableTable({ batch, data }: FullTimetableTableProps) {
           {TimeSlots.map((slot) => (
             <TableRow key={slot}>
               {[
-                <TableCell
-                  key="time"
-                  className="font-semibold text-gray-800 dark:text-gray-200"
-                >
+                <TableCell key="time" className="font-semibold">
                   {slot}
                 </TableCell>,
                 ...Days.map((day) => {
                   const entry = data.find(
                     (item) => item.day === day && item.time === slot,
                   );
-                  let classInfo = null;
-                  if (entry && entry.data) {
-                    classInfo = findClassForBatch(entry.data, batch);
-                  }
+                  const classInfo = entry?.data
+                    ? findClassForBatch(entry.data, batch)
+                    : null;
+
                   return (
-                    <TableCell
-                      key={`${slot}-${day}`}
-                      className="p-2 align-top border-b border-gray-300 dark:border-neutral-700"
-                    >
+                    <TableCell key={`${slot}-${day}`}>
                       {classInfo ? (
-                        <div className="bg-white dark:bg-neutral-800 rounded-lg shadow-md dark:shadow-neutral-900 p-3 space-y-1 hover:shadow-lg dark:hover:shadow-neutral-700 transition-shadow duration-300">
-                          <div className="font-semibold text-gray-900 dark:text-neutral-100">
+                        <Card
+                          shadow="lg"
+                          className="hover:scale-110 cursor-crosshair"
+                        >
+                          <CardHeader className="p-0 px-2 mt-2 mb-0">
                             {classInfo.courseCode}
-                          </div>
-                          <div className="text-xs text-gray-600 dark:text-neutral-400">
-                            {classInfo.type}
-                          </div>
-                          <div className="text-xs text-gray-700 dark:text-neutral-300">
-                            {classInfo.venue}
-                          </div>
-                        </div>
+                          </CardHeader>
+                          <CardBody>
+                            <div className="text-foreground/50">
+                              {classInfo.type}
+                            </div>
+                            <div>{classInfo.venue}</div>
+                          </CardBody>
+                        </Card>
                       ) : (
                         <span className="text-gray-400 dark:text-neutral-500">
                           —
