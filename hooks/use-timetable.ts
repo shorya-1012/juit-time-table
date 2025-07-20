@@ -47,5 +47,22 @@ export function useTimetable(course: string | null, batch: string | null) {
     fetchData();
   }, [course, batch]);
 
+  data?.sort((a, b) => {
+    const getStartTime = (t: string) => {
+      const meridiem = t.split(" ").at(-1);
+      const startTime = t.split(" - ")[0].trim();
+      let [hours, mins] = startTime.split(" ")[0].split(":").map(Number);
+
+      if (meridiem === "PM" && hours !== 12) {
+        hours += 12;
+      } else if (meridiem === "AM" && hours === 12) {
+        hours = 0;
+      }
+
+      return hours * 60 + mins;
+    };
+    return getStartTime(a.time) - getStartTime(b.time);
+  });
+
   return data;
 }

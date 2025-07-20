@@ -19,6 +19,8 @@ export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
     return Days[jsDayIndex - 1];
   });
 
+  // console.log(data);
+
   const todaySchedule = data.filter((entry) => entry.day === selectedDay);
 
   const typeColors = {
