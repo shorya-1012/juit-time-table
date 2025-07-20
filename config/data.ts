@@ -10,13 +10,13 @@ export const Courses = [
 ];
 
 export const HomePageAlert = {
-  // title: "Bugs",
-  title: "Found a bug? Report it on GitHub. Contributions are welcome.",
+  title: "Found some Bugs?",
+  description: "Report them on GitHub. Contributions are welcome.",
 };
 export const UpdatePageAlert = {
   title: "This is Update section for timetable .",
   description:
-    "Please do not spom it , if you don't know the password and want to update it, you can mail us.",
+    "Please do not spam it , if you don't know the password and want to update it, you can mail us.",
 };
 export const DaysMapper = {
   0: "MONDAY",

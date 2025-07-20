@@ -28,6 +28,12 @@ export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
     Tutorial: "border-yellow-500",
   };
 
+  const classTypeMap = {
+    Lecture: "Lecture 📘",
+    Tutorial: "Tutorial 📝",
+    Practical: "Practical 🧪",
+  };
+
   return (
     <section className="flex flex-col items-center justify-center gap-4">
       <Select
@@ -65,16 +71,14 @@ export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
           >
             <CardHeader className="flex justify-between items-center text-gray-800 dark:text-gray-200">
               <span className="text-lg font-semibold">{entry.time}</span>
-              <span className="text-sm font-bold">{classInfo.courseCode}</span>
+              <span className="text-sm font-bold">
+                {classTypeMap[classInfo.type]}
+              </span>
             </CardHeader>
             <CardBody className="text-gray-800 dark:text-gray-300 space-y-1">
               <p>
-                <strong>Type:</strong>{" "}
-                <span className="capitalize">
-                  {classInfo.type} {classInfo.type === "Lecture" && "📘"}
-                  {classInfo.type === "Practical" && "🧪"}
-                  {classInfo.type === "Tutorial" && "📝"}
-                </span>
+                <strong>Course:</strong>{" "}
+                <span className="capitalize">{classInfo.courseCode}</span>
               </p>
               <p>
                 <strong>Batches:</strong>{" "}
