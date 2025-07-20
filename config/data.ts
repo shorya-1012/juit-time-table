@@ -10,8 +10,8 @@ export const Courses = [
 ];
 
 export const HomePageAlert = {
-  title: "Thanks for visiting.",
-  description: " If any bugs please report in github and feel free to send pr.",
+  // title: "Bugs",
+  title: "Found a bug? Report it on GitHub. Contributions are welcome.",
 };
 export const UpdatePageAlert = {
   title: "This is Update section for timetable .",

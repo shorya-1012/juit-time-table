@@ -6,20 +6,19 @@ import { findClassForBatch } from "@/lib/utils";
 import { DATA } from "@/types";
 
 // EVEN IDK WTF I've WRITEN
+// I ain't reading ts
 
 export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
   const [selectedDay, setSelectedDay] = useState(() => {
     const now = new Date();
     let jsDayIndex = now.getDay();
 
-    if (jsDayIndex === 0) jsDayIndex = 1;
     if (now.getHours() >= 18) jsDayIndex += 1;
+    if (jsDayIndex === 0) jsDayIndex = 1;
     if (jsDayIndex === 0 || jsDayIndex > 6) jsDayIndex = 1;
 
     return Days[jsDayIndex - 1];
   });
-
-  // console.log(data);
 
   const todaySchedule = data.filter((entry) => entry.day === selectedDay);
 
