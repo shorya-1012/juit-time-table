@@ -14,9 +14,9 @@ export const HomePageAlert = {
   description: "Report them on GitHub. Contributions are welcome.",
 };
 export const UpdatePageAlert = {
-  title: "This is Update section for timetable .",
+  title: "Timetable Update Section",
   description:
-    "Please do not spam it , if you don't know the password and want to update it, you can mail us.",
+    "Don't spam. If you need access but don’t have the password, feel free to email us.",
 };
 export const DaysMapper = {
   0: "MONDAY",

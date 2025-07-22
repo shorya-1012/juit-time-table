@@ -6,34 +6,23 @@ import { Alert } from "@heroui/alert";
 import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
 import { Snippet } from "@heroui/snippet";
-import { button as buttonStyles } from "@heroui/theme";
 import { addToast } from "@heroui/toast";
 import axios from "axios";
-import Link from "next/link";
+import { useRouter } from "nextjs-toploader/app";
 import { useState } from "react";
 
 export default function Home() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const router = useRouter();
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!password) {
-      addToast({
-        title: "Missing Password",
-        color: "danger",
-        description: "Please enter a password before submitting.",
-        timeout: 3000,
-        shouldShowTimeoutProgress: true,
-      });
-      return;
-    }
-
     setLoading(true);
+
     try {
       await axios.put("/api/set", { password });
 
@@ -44,6 +33,7 @@ export default function Home() {
         timeout: 3000,
         shouldShowTimeoutProgress: true,
       });
+      setTimeout(() => router.push("/"), 3000);
 
       setPassword("");
     } catch (err) {
@@ -112,12 +102,6 @@ export default function Home() {
       />
 
       <div className=" flex gap-2">
-        <Link
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={"/"}
-        >
-          Timetable
-        </Link>
         <Button isLoading={loading} type="submit" radius="full" color="primary">
           Set Timetable
         </Button>

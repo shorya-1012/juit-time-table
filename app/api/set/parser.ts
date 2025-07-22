@@ -26,11 +26,22 @@ export default function parser(sheet: WorkSheet) {
           ), // Format time properly
       };
       for (let row = index; row <= index + 15; row++) {
-        const cellValue = String(sheet[`${col}${row}`].v).replace(/\s+/g, " ");
-        if (cellValue) {
-          const finalValue = cellValue.replace(/\s*,\s*/g, ","); // Remove spaces around commas
-          temp.data.push(finalValue);
-        }
+        const raw = sheet[`${col}${row}`];
+        if (!raw) continue;
+
+        let cellValue = String(raw.v).replace(/\s+/g, " ");
+
+        // If the cell has batch info like "XYZ_Batch-[...]", extract just the list inside brackets
+        cellValue = cellValue.replace(
+          /[A-Z0-9_]+-?Batch-\d*\[([^\]]+)\]/gi,
+          "$1",
+        );
+
+        // Also handle weird cases like CS511, CS512 with extra spaces around commas
+        cellValue = cellValue.replace(/\s*,\s*/g, ",");
+
+        // Add to final data
+        temp.data.push(cellValue);
       }
       record.push(temp);
     }
