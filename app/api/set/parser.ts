@@ -30,17 +30,7 @@ export default function parser(sheet: WorkSheet) {
         if (!raw) continue;
 
         let cellValue = String(raw.v).replace(/\s+/g, " ");
-
-        // If the cell has batch info like "XYZ_Batch-[...]", extract just the list inside brackets
-        cellValue = cellValue.replace(
-          /[A-Z0-9_]+-?Batch-\d*\[([^\]]+)\]/gi,
-          "$1",
-        );
-
-        // Also handle weird cases like CS511, CS512 with extra spaces around commas
         cellValue = cellValue.replace(/\s*,\s*/g, ",");
-
-        // Add to final data
         temp.data.push(cellValue);
       }
       record.push(temp);
