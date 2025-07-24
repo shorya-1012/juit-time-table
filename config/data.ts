@@ -7,6 +7,10 @@ export const Courses = [
   "BTECH 6 SEM",
   "BTECH 7 SEM",
   "BTECH 8 SEM",
+  "MTECH-MSc 1 SEM",
+  "MTECH-MSc 2 SEM",
+  "MTECH-MSc 3 SEM, PhD2",
+  "MTECH-MSc 4 SEM, PhD2",
 ];
 
 export const HomePageAlert = {
