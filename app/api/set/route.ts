@@ -29,14 +29,15 @@ export async function PUT(request: NextRequest) {
     for (const sheetName of sheetNames) {
       const sheet = workbook.Sheets[sheetName];
       const records = parser(sheet);
+      console.log("records are : \n", records);
       const model = modelMap[sheetName as keyof typeof modelMap];
 
       if (!model) {
         throw new Error(`Invalid sheetName: ${sheetName}`);
       }
 
-      await model.deleteMany({}, { session });
       await model.insertMany(records, { session });
+      await model.deleteMany({}, { session });
     }
 
     await session.commitTransaction();

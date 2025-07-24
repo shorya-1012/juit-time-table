@@ -20,6 +20,7 @@ export default function parser(sheet: WorkSheet) {
         data: [],
         time: sheet[`${col}2`].v
           .replace(/\s*/g, "") // Remove all spaces
+          // I aint reading ts
           .replace(
             /(\d{1,2}:\d{2})(AM|PM)-(\d{1,2}:\d{2})(AM|PM)/i,
             "$1 $2 - $3 $4",
