@@ -35,8 +35,8 @@ export async function PUT(request: NextRequest) {
         throw new Error(`Invalid sheetName: ${sheetName}`);
       }
 
-      await model.insertMany(records, { session });
       await model.deleteMany({}, { session });
+      await model.insertMany(records, { session });
     }
 
     await session.commitTransaction();
