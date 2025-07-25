@@ -48,7 +48,7 @@ export async function PUT(request: NextRequest) {
       { status: 200 },
     );
   } catch (err) {
-    console.error(err);
+    console.log(err);
     await session.abortTransaction();
     session.endSession();
 
