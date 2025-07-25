@@ -2,13 +2,32 @@ import { useState } from "react";
 import { Days } from "@/config/data";
 import { Card, CardBody, CardHeader } from "@heroui/card";
 import { Select, SelectItem } from "@heroui/select";
-import { findClassForBatch } from "@/lib/utils";
+import { findClassForBatch, toDisclude } from "@/lib/utils";
 import { DATA } from "@/types";
 
 // EVEN IDK WTF I've WRITEN
 // I ain't reading ts
 
-export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
+type PROPS = {
+  course: string;
+  batch: string;
+  minor: string | null;
+  data: DATA[];
+};
+
+const typeColors = {
+  Lecture: "border-blue-500",
+  Practical: "border-green-500",
+  Tutorial: "border-yellow-500",
+};
+
+const classTypeMap = {
+  Lecture: "Lecture 📘",
+  Tutorial: "Tutorial 📝",
+  Practical: "Practical 🧪",
+};
+
+export function SmTimetable({ course, minor, batch, data }: PROPS) {
   const [selectedDay, setSelectedDay] = useState(() => {
     const now = new Date();
     let jsDayIndex = now.getDay();
@@ -21,18 +40,8 @@ export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
   });
 
   const todaySchedule = data.filter((entry) => entry.day === selectedDay);
-
-  const typeColors = {
-    Lecture: "border-blue-500",
-    Practical: "border-green-500",
-    Tutorial: "border-yellow-500",
-  };
-
-  const classTypeMap = {
-    Lecture: "Lecture 📘",
-    Tutorial: "Tutorial 📝",
-    Practical: "Practical 🧪",
-  };
+  const toSkip = toDisclude(course, minor);
+  console.log(toSkip);
 
   return (
     <section className="flex flex-col items-center justify-center gap-4">
@@ -48,7 +57,7 @@ export function SmTimetable({ batch, data }: { batch: string; data: DATA[] }) {
       </Select>
 
       {todaySchedule.map((entry) => {
-        const classInfo = findClassForBatch(entry.data, batch);
+        const classInfo = findClassForBatch(batch, entry.data, toSkip);
 
         if (!classInfo) {
           return (

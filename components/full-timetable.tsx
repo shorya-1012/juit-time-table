@@ -9,15 +9,22 @@ import {
 import { Card, CardBody, CardHeader } from "@heroui/card";
 
 import { Days, TimeSlots } from "@/config/data";
-import { findClassForBatch } from "@/lib/utils";
+import { findClassForBatch, toDisclude } from "@/lib/utils";
 import { DATA } from "@/types";
 
 type FullTimetableTableProps = {
+  course: string;
   batch: string;
+  minor: string | null;
   data: DATA[];
 };
 
-export function FullTimetableTable({ batch, data }: FullTimetableTableProps) {
+export function FullTimetableTable({
+  course,
+  batch,
+  minor,
+  data,
+}: FullTimetableTableProps) {
   const columns = ["TIME", ...Days];
 
   return (
@@ -40,8 +47,10 @@ export function FullTimetableTable({ batch, data }: FullTimetableTableProps) {
                   const entry = data.find(
                     (item) => item.day === day && item.time === slot,
                   );
+
+                  const toSkip = minor ? toDisclude(course, minor) : [];
                   const classInfo = entry?.data
-                    ? findClassForBatch(entry.data, batch)
+                    ? findClassForBatch(batch, entry.data, toSkip)
                     : null;
 
                   return (

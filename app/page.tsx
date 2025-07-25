@@ -1,5 +1,10 @@
 "use client";
-import { HomePageAlert, Courses } from "@/config/data";
+import {
+  HomePageAlert,
+  Courses,
+  ElectiveSubjects,
+  ELECTIVE_SUBJECTS,
+} from "@/config/data";
 import { Alert } from "@heroui/alert";
 import { Input } from "@heroui/input";
 import { Select, SelectItem } from "@heroui/select";
@@ -7,23 +12,33 @@ import { FormEvent, useState } from "react";
 import { Button } from "@heroui/button";
 import { useRouter } from "nextjs-toploader/app";
 
+type INPUT_DATA = {
+  course: string;
+  batch: string;
+  minor: string | null;
+};
+
 export default function Home() {
   const SEM = process.env.NEXT_PUBLIC_SEM;
   const router = useRouter();
-  const [data, setData] = useState({
+  const [data, setData] = useState<INPUT_DATA>({
     course: "",
     batch: "",
+    minor: null,
   });
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { course, batch } = data;
+    const { course, batch, minor } = data;
     let cleanBatch = batch.replace(/ /g, "").replace(/-/g, "").toUpperCase();
 
     const encodedBatch = encodeURIComponent(cleanBatch);
     const encodedCourse = encodeURIComponent(course);
+    const encodedMinor = encodeURIComponent(minor ?? "");
 
-    router.push(`/timetable?batch=${encodedBatch}&course=${encodedCourse}`);
+    router.push(
+      `/timetable?batch=${encodedBatch}&course=${encodedCourse}&minor=${encodedMinor}`,
+    );
   };
 
   return (
@@ -58,6 +73,29 @@ export default function Home() {
           <SelectItem key={course}>{course}</SelectItem>
         ))}
       </Select>
+      {data.course && ["5", "6", "7", "8"].includes(data.course.charAt(6)) ? (
+        <Select
+          size="sm"
+          isRequired
+          className="max-w-md"
+          label="Elective Courses"
+          description={"Minor subjects(3rd and 4th year)"}
+          onChange={(e) =>
+            setData((prev) => ({ ...prev, minor: e.target.value as any }))
+          }
+        >
+          {ElectiveSubjects[data.course as ELECTIVE_SUBJECTS].map((ele) => (
+            <SelectItem key={ele}>{ele}</SelectItem>
+          ))}
+        </Select>
+      ) : (
+        <Input
+          disabled
+          description="Minor subjects(3rd and 4th year)"
+          className="max-w-md"
+          label="Elective Courses"
+        />
+      )}
 
       <Input
         isRequired
