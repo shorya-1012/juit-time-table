@@ -1,11 +1,11 @@
-# 🧭 Contributing to JUIT Timetable
+# Contributing to JUIT Timetable
 
-Thanks for considering contributing to the **JUIT Timetable** project! 🎉  
+Thanks for considering contributing to the **JUIT Timetable** project!
 Whether you're fixing a bug, adding a feature, or improving the UI — you're welcome here.
 
 ---
 
-## 📦 Project Setup
+## Project Setup
 
 ```bash
 # 1. Clone the repo
@@ -19,13 +19,13 @@ bun install
 bun run dev
 ```
 
-### 🌱 Environment Setup
+### Environment Setup
 
 Check the `.env.example` file and create your own `.env` with the required variables.
 
 ---
 
-### 🔧 Branch Naming
+### Branch Naming
 
 Use meaningful branch names:
 
@@ -33,7 +33,7 @@ Use meaningful branch names:
 - `feat/drawer-ui`
 - `refactor/timetable-cleanup`
 
-### 📝 Commit Messages
+### Commit Messages
 
 Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
 
@@ -42,13 +42,6 @@ Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
 - `docs:` — Documentation changes
 - `refactor:` — Code refactoring (no behavior change)
 - `chore:` — Tooling or dependency updates
-
-Example:
-
-```bash
-feat: add retry button to QR scan drawer
-```
-
 ---
 
 ## ✅ Pull Request Checklist
@@ -63,7 +56,7 @@ Before submitting a pull request:
 
 ---
 
-## 📁 Folder Structure (Brief)
+## Folder Structure (Brief)
 
 ```
 components/        # UI components
@@ -75,7 +68,7 @@ app/               # Route handlers (Next.js App Dir)
 
 ---
 
-## 🧠 Tips for Contributors
+## Tips for Contributors
 
 - Use [Hero UI](https://www.heroui.com/) components when adding new UI.
 - Follow Tailwind CSS conventions for styling.
@@ -84,11 +77,4 @@ app/               # Route handlers (Next.js App Dir)
 
 ---
 
-## 💬 Getting Help
-
-Need guidance?  
-Open a [Discussion](https://github.com/SurajKharkwal/juit-timetable/discussions) or create an issue with the `question` label.
-
----
-
-Thanks for making this project better! 🙌
+Thanks for making this project better!
