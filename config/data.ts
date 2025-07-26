@@ -1,4 +1,3 @@
-// I've used them ???
 export const Courses = [
   "BTECH 1 SEM",
   "BTECH 2 SEM",
@@ -39,6 +38,11 @@ export const UpdatePageAlert = {
   title: "Timetable Update Section",
   description:
     "Don't spam. If you need access but don’t have the password, feel free to email us.",
+};
+export const ElectiveSubjectsRequest = {
+  title: "Missing Electives Info",
+  description:
+    "I don’t have 4th-year ElectiveSubjects(Minor/Major) course codes. Got them? Contribute on GitHub!",
 };
 export const DaysMapper = {
   0: "MONDAY",
