@@ -5,8 +5,6 @@ export const Courses = [
   "BTECH 4 SEM",
   "BTECH 5 SEM",
   "BTECH 6 SEM",
-  "BTECH 7 SEM",
-  "BTECH 8 SEM",
   "MTECH-MSc 1 SEM",
   "MTECH-MSc 2 SEM",
   "MTECH-MSc 3 SEM, PhD2",

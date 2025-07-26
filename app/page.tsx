@@ -77,7 +77,11 @@ export default function Home() {
       {data.course && ["5", "6", "7", "8"].includes(data.course.charAt(6)) ? (
         <Select
           size="sm"
-          isRequired
+          isRequired={
+            ElectiveSubjects[data.course as ELECTIVE_SUBJECTS].length > 0
+              ? true
+              : false
+          }
           className="max-w-md"
           label="Elective Courses"
           description={"Minor subjects(3rd and 4th year)"}
