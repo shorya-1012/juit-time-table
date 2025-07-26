@@ -1,3 +1,4 @@
+// I've used them ???
 export const Courses = [
   "BTECH 1 SEM",
   "BTECH 2 SEM",
@@ -12,6 +13,23 @@ export const Courses = [
   "MTECH-MSc 3 SEM, PhD2",
   "MTECH-MSc 4 SEM, PhD2",
 ];
+
+export const ElectiveSubjects = {
+  "BTECH 5 SEM": ["CLOUND COMPUTING", "DATA SCIENCE", "COMPRESSION"],
+  "BTECH 6 SEM": [],
+  "BTECH 7 SEM": [],
+  "BTECH 8 SEM": [],
+};
+
+export type ELECTIVE_SUBJECTS = keyof typeof ElectiveSubjects;
+
+export const ElectiveSubjectsCode = {
+  COMPRESSION: ["18B1WCI532", "18B1WCI572"], // lecture and lab
+  "DATA SCIENCE": ["20B1WCI531", "20B1WCI571"],
+  "CLOUND COMPUTING": ["20B1WCI532", "20B1WCI572"],
+};
+
+export type ELECTIVE_SUBJECTS_CODE = keyof typeof ElectiveSubjectsCode;
 
 export const HomePageAlert = {
   title: "Found some Bugs?",

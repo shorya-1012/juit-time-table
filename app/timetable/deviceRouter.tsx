@@ -7,19 +7,17 @@ import Loading from "../loading";
 
 export default function DeviceRouter() {
   const searchParams = useSearchParams();
-
-  const course = searchParams.get("course");
-  const batch = searchParams.get("batch");
-
-  const data = useTimetable(course, batch);
+  const params = {
+    course: searchParams.get("course")!,
+    batch: searchParams.get("batch")!,
+    minor: searchParams.get("minor"),
+  };
+  const data = useTimetable(params.course, params.batch);
+  console.log(data);
 
   const isMobile = useIsMobile();
   if (isMobile == undefined || data == undefined) return <Loading />;
-  if (!batch || !course) return "Batch or Course not found";
 
-  if (isMobile) {
-    return <SmTimetable batch={batch} data={data} />;
-  } else {
-    return <FullTimetableTable batch={batch} data={data} />;
-  }
+  if (isMobile) return <SmTimetable {...params} data={data} />;
+  return <FullTimetableTable {...params} data={data} />;
 }
