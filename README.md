@@ -1,5 +1,9 @@
 # [JUIT Timetable](https://juit-timetable.vercel.app)
 
-The JUIT Time Table project is a web-based application designed to provide students
-and faculty of Jaypee University of Information Technology (JUIT) with an accessible and
-organized platform to view and manage class schedules.
+A web-based application that renders the college timetable in a cleaner and more user-friendly format by parsing the official timetable provided by the college.
+
+---
+
+## Contributing
+
+If you'd like to contribute, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) file for guidelines and setup instructions.
