@@ -5,11 +5,12 @@ import {
   ElectiveSubjects,
   ELECTIVE_SUBJECTS,
   ElectiveSubjectsRequest,
+  LocalStorageKeys,
 } from "@/config/data";
 import { Alert } from "@heroui/alert";
 import { Input } from "@heroui/input";
 import { Select, SelectItem } from "@heroui/select";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Button } from "@heroui/button";
 import { useRouter } from "nextjs-toploader/app";
 
@@ -33,14 +34,43 @@ export default function Home() {
     const { course, batch, minor } = data;
     let cleanBatch = batch.replace(/ /g, "").replace(/-/g, "").toUpperCase();
 
+    if (ElectiveSubjects[data.course as ELECTIVE_SUBJECTS].length === 0) {
+      data.minor = "";
+    }
+
     const encodedBatch = encodeURIComponent(cleanBatch);
     const encodedCourse = encodeURIComponent(course);
     const encodedMinor = encodeURIComponent(minor ?? "");
+
+    // set localstorage
+    localStorage.setItem(LocalStorageKeys.batch, batch);
+    localStorage.setItem(LocalStorageKeys.course, course);
+    if (minor) {
+      localStorage.setItem(LocalStorageKeys.minor, minor);
+    }
 
     router.push(
       `/timetable?batch=${encodedBatch}&course=${encodedCourse}&minor=${encodedMinor}`,
     );
   };
+
+  useEffect(() => {
+    const loadLocalStorageData = () => {
+      const localBatch = localStorage.getItem(LocalStorageKeys.batch);
+      const localCourse = localStorage.getItem(LocalStorageKeys.course);
+
+      const localMinor = localStorage.getItem(LocalStorageKeys.minor);
+
+      if (localBatch && localCourse) {
+        setData({
+          batch: localBatch,
+          course: localCourse,
+          minor: localMinor,
+        });
+      }
+    };
+    loadLocalStorageData();
+  }, []);
 
   return (
     <form
@@ -57,6 +87,7 @@ export default function Home() {
         description={SEM}
         size="sm"
         className="max-w-md"
+        selectedKeys={data.course ? new Set([data.course]) : new Set()}
         label="Select course"
         disabledKeys={Courses.filter((_, index) => {
           if (SEM === "ODD_SEM") {
@@ -83,6 +114,7 @@ export default function Home() {
               : false
           }
           className="max-w-md"
+          selectedKeys={data.minor ? new Set([data.minor]) : new Set()}
           label="Elective Courses"
           description={"Minor subjects(3rd and 4th year)"}
           onChange={(e) =>
@@ -104,7 +136,7 @@ export default function Home() {
 
       <Input
         isRequired
-        description="Eg: 23A13, 24C32"
+        description="Eg: 23A13, 24A11"
         size="sm"
         aria-label="Batch"
         label="Enter Batch"
@@ -115,6 +147,7 @@ export default function Home() {
           inputWrapper: "bg-default-100",
           input: "text-sm",
         }}
+        value={data.batch}
         className="max-w-md"
         type="search"
       />

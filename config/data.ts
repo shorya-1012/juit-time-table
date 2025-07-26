@@ -12,6 +12,10 @@ export const Courses = [
 ];
 
 export const ElectiveSubjects = {
+  "BTECH 1 SEM": [],
+  "BTECH 2 SEM": [],
+  "BTECH 3 SEM": [],
+  "BTECH 4 SEM": [],
   "BTECH 5 SEM": ["CLOUND COMPUTING", "DATA SCIENCE", "COMPRESSION"],
   "BTECH 6 SEM": [],
   "BTECH 7 SEM": [],
@@ -82,3 +86,9 @@ export const Days = [
   "FRIDAY",
   "SATURDAY",
 ];
+
+export const LocalStorageKeys = {
+  batch: "JUIT_TIME_TABLE:batch",
+  course: "JUIT_TIME_TABLE:course",
+  minor: "JUIT_TIME_TABLE:minor",
+} as const;
