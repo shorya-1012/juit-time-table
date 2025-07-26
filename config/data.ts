@@ -40,10 +40,11 @@ export const UpdatePageAlert = {
     "Don't spam. If you need access but don’t have the password, feel free to email us.",
 };
 export const ElectiveSubjectsRequest = {
-  title: "Missing Electives Info",
+  title: "Missing Elective Subject Codes",
   description:
-    "I don’t have 4th-year ElectiveSubjects(Minor/Major) course codes. Got them? Contribute on GitHub!",
+    "I don't have the course codes for most of the Elective Subjects (Minor/Major). If you have them, please help by contributing to the open issue on GitHub.",
 };
+
 export const DaysMapper = {
   0: "MONDAY",
   1: "TUESDAY",
