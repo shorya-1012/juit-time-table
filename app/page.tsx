@@ -4,7 +4,6 @@ import {
   Courses,
   ElectiveSubjects,
   ELECTIVE_SUBJECTS,
-  ElectiveSubjectsRequest,
   LocalStorageKeys,
 } from "@/config/data";
 import { Alert } from "@heroui/alert";
@@ -162,13 +161,6 @@ export default function Home() {
         color="primary"
         title={HomePageAlert.title}
         description={HomePageAlert.description}
-      />
-
-      <Alert
-        className="max-w-md"
-        color="warning"
-        title={ElectiveSubjectsRequest.title}
-        description={ElectiveSubjectsRequest.description}
       />
     </form>
   );

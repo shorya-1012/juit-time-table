@@ -16,7 +16,7 @@ export const ElectiveSubjects = {
   "BTECH 2 SEM": [],
   "BTECH 3 SEM": [],
   "BTECH 4 SEM": [],
-  "BTECH 5 SEM": ["CLOUND COMPUTING", "DATA SCIENCE", "COMPRESSION"],
+  "BTECH 5 SEM": ["CLOUD COMPUTING", "DATA SCIENCE", "COMPRESSION"],
   "BTECH 6 SEM": [],
   "BTECH 7 SEM": [],
   "BTECH 8 SEM": [],
@@ -27,7 +27,7 @@ export type ELECTIVE_SUBJECTS = keyof typeof ElectiveSubjects;
 export const ElectiveSubjectsCode = {
   COMPRESSION: ["18B1WCI532", "18B1WCI572"], // lecture and lab
   "DATA SCIENCE": ["20B1WCI531", "20B1WCI571"],
-  "CLOUND COMPUTING": ["20B1WCI532", "20B1WCI572"],
+  "CLOUD COMPUTING": ["20B1WCI532", "20B1WCI572"],
 };
 
 export type ELECTIVE_SUBJECTS_CODE = keyof typeof ElectiveSubjectsCode;
@@ -40,11 +40,6 @@ export const UpdatePageAlert = {
   title: "Timetable Update Section",
   description:
     "Don't spam. If you need access but don’t have the password, feel free to email us.",
-};
-export const ElectiveSubjectsRequest = {
-  title: "Missing Elective Subject Codes",
-  description:
-    "I don't have the course codes for most of the Elective Subjects (Minor/Major). If you have them, please help by contributing to the open issue on GitHub.",
 };
 
 export const DaysMapper = {

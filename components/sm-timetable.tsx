@@ -41,7 +41,6 @@ export function SmTimetable({ course, minor, batch, data }: PROPS) {
 
   const todaySchedule = data.filter((entry) => entry.day === selectedDay);
   const toSkip = toDisclude(course, minor);
-  // console.log(toSkip);
 
   return (
     <section className="flex flex-col items-center justify-center gap-4">
