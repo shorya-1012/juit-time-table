@@ -16,7 +16,7 @@ export const ElectiveSubjects = {
   "BTECH 2 SEM": [],
   "BTECH 3 SEM": [],
   "BTECH 4 SEM": [],
-  "BTECH 5 SEM": ["CLOUD COMPUTING", "DATA SCIENCE", "COMPRESSION"],
+  "BTECH 5 SEM": ["CLOUD COMPUTING", "DATA SCIENCE", "PROMPT ENGINEERING"],
   "BTECH 6 SEM": [],
   "BTECH 7 SEM": [],
   "BTECH 8 SEM": [],
@@ -25,7 +25,7 @@ export const ElectiveSubjects = {
 export type ELECTIVE_SUBJECTS = keyof typeof ElectiveSubjects;
 
 export const ElectiveSubjectsCode = {
-  COMPRESSION: ["18B1WCI532", "18B1WCI572"], // lecture and lab
+  "PROMPT ENGINEERING": ["25B1WCI511", "25B1WCI571"], // lecture and lab
   "DATA SCIENCE": ["20B1WCI531", "20B1WCI571"],
   "CLOUD COMPUTING": ["20B1WCI532", "20B1WCI572"],
 };

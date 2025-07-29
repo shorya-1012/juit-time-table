@@ -115,7 +115,7 @@ export default function Home() {
           className="max-w-md"
           selectedKeys={data.minor ? new Set([data.minor]) : new Set()}
           label="Elective Courses"
-          description={"Minor subjects(3rd and 4th year)"}
+          description={"Minor subjects for 3rd year"}
           onChange={(e) =>
             setData((prev) => ({ ...prev, minor: e.target.value as any }))
           }

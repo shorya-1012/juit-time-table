@@ -1,7 +1,7 @@
 import "@/styles/loading.css";
 export default function Loading() {
   return (
-    <div className="w-full h-full flex items-center justify-center pt-96 ">
+    <div className="w-full h-full flex items-center justify-center pt-60 md:pt-96 ">
       <div className="loading">
         <div className="loading-wide">
           <div className="l1 color"></div>
