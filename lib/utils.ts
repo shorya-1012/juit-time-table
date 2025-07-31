@@ -18,18 +18,15 @@ function getFloor(venue: string): string | null {
   if (!venue) return null;
 
   const normalize = (str: string) =>
-    str.toUpperCase().replace(/\s+/g, "").replace("-", "");
+    str.toUpperCase().replace(/\s+/g, "").replace(/-/g, "");
 
   const normalizedVenue = normalize(venue);
 
-  const found = Object.keys(floorMap)
-    .map((room) => {
-      const normalizedRoom = normalize(room);
-      return normalizedVenue.includes(normalizedRoom) ? floorMap[room] : null;
-    })
-    .find((floor) => floor !== null);
+  const found = Object.keys(floorMap).find((room) =>
+    normalizedVenue.includes(room)
+  );
 
-  return found ?? null;
+  return found ? floorMap[found] : null;
 }
 
 export function toDisclude(course: string, minor: string | null): string[] {
