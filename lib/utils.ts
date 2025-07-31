@@ -22,14 +22,14 @@ function getFloor(venue: string): string | null {
 
   const normalizedVenue = normalize(venue);
 
-  for (const room in floorMap) {
-    const normalizedRoom = normalize(room);
-    if (normalizedVenue.includes(normalizedRoom)) {
-      return floorMap[room];
-    }
-  }
+  const found = Object.keys(floorMap)
+    .map((room) => {
+      const normalizedRoom = normalize(room);
+      return normalizedVenue.includes(normalizedRoom) ? floorMap[room] : null;
+    })
+    .find((floor) => floor !== null);
 
-  return null;
+  return found ?? null;
 }
 
 export function toDisclude(course: string, minor: string | null): string[] {
