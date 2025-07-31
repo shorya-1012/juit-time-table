@@ -33,10 +33,6 @@ export default function Home() {
     const { course, batch, minor } = data;
     let cleanBatch = batch.replace(/ /g, "").replace(/-/g, "").toUpperCase();
 
-    if (ElectiveSubjects[data.course as ELECTIVE_SUBJECTS].length === 0) {
-      data.minor = "";
-    }
-
     const encodedBatch = encodeURIComponent(cleanBatch);
     const encodedCourse = encodeURIComponent(course);
     const encodedMinor = encodeURIComponent(minor ?? "");
