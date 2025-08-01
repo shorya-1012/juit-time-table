@@ -3,7 +3,6 @@ import {
   ELECTIVE_SUBJECTS_CODE,
   ElectiveSubjects,
   ElectiveSubjectsCode,
-  floorMap,
 } from "@/config/data";
 
 const typeMap = {
@@ -14,21 +13,6 @@ const typeMap = {
 
 type TYPE_MAP = keyof typeof typeMap;
 
-function getFloor(venue: string): string | null {
-  if (!venue) return null;
-
-  const normalize = (str: string) =>
-    str.toUpperCase().replace(/\s+/g, "").replace(/-/g, "");
-
-  const normalizedVenue = normalize(venue);
-
-  const found = Object.keys(floorMap).find((room) =>
-    normalizedVenue.includes(room)
-  );
-
-  return found ? floorMap[found] : null;
-}
-
 export function toDisclude(course: string, minor: string | null): string[] {
   const subjects = ElectiveSubjects[course as ELECTIVE_SUBJECTS];
   if (!subjects.length || !minor) return [];
@@ -36,7 +20,8 @@ export function toDisclude(course: string, minor: string | null): string[] {
   return subjects
     .filter((subject) => subject !== minor)
     .flatMap(
-      (subject) => ElectiveSubjectsCode[subject as ELECTIVE_SUBJECTS_CODE] || []
+      (subject) =>
+        ElectiveSubjectsCode[subject as ELECTIVE_SUBJECTS_CODE] || [],
     );
 }
 
@@ -57,7 +42,7 @@ const patterns = [
 export function findClassForBatch(
   batch: string,
   entries: string[],
-  toDisclude: string[]
+  toDisclude: string[],
 ) {
   for (const entry of entries) {
     for (const pattern of patterns) {
@@ -80,7 +65,6 @@ export function findClassForBatch(
           coordinator,
           venue,
           raw: entry,
-          floor: getFloor(venue),
         };
       }
       // Other patterns
@@ -98,7 +82,6 @@ export function findClassForBatch(
         coordinator,
         venue,
         raw: entry,
-        floor: getFloor(venue),
       };
     }
   }
