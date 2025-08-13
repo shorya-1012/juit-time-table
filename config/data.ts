@@ -64,6 +64,7 @@ export const TimeMapper = {
   "5": "02:00 PM - 02:55 PM",
   "6": "03:00 PM - 03:55 PM",
   "7": "04:00 PM - 04:55 PM",
+  "8": "05:00 PM - 05:55 PM",
 };
 
 export const TimeSlots = [
@@ -75,6 +76,7 @@ export const TimeSlots = [
   "02:00 PM - 02:55 PM",
   "03:00 PM - 03:55 PM",
   "04:00 PM - 04:55 PM",
+  "05:00 PM - 05:55 PM",
 ];
 
 export const Days = [
