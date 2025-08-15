@@ -1,20 +1,31 @@
-name: 🚀 Feature Request
-description: Suggest an idea
+name: "🚀 Feature Request"
+description: "Suggest an idea or improvement"
 title: "[Feature]: "
 labels: ["enhancement"]
 body:
-  - type: input
-    id: summary
-    attributes:
-      label: What's the feature?
-      placeholder: "e.g., Add retry button in drawer"
-    validations:
-      required: true
   - type: textarea
     id: motivation
     attributes:
-      label: Why is this feature needed?
+      label: "Why is this feature needed?"
+      description: "Explain the problem this feature would solve or the value it would add."
+      placeholder: "Currently..., It would be better if..."
+    validations:
+      required: true
+
   - type: textarea
     id: solution
     attributes:
-      label: Suggested Solution
+      label: "Suggested Solution"
+      description: "Describe your proposed solution or approach."
+      placeholder: "I suggest implementing..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternatives Considered"
+      description: "If you’ve considered other solutions, list them here."
+      placeholder: "Alternative 1: ..., Alternative 2: ..."
+    validations:
+      required: false
