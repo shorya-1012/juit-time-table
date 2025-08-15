@@ -28,17 +28,20 @@ export function toDisclude(course: string, minor: string | null): string[] {
 }
 
 const patterns = [
-  // Pattern 1: Bracketed batches like: PCC_LAB__Batch[23A11,23A12]
+  // Pattern 1: Bracketed batches like:   "L-18P1WPH532 PCC_LAB__Batch[23A11,23A12] (VNS) CR7"
   /^([LPT])-([A-Z0-9]+)\s+[^\[\]()]*\[([\dA-Z,\/]+)\]\s+\(([^)]+)\)\s+(.+)$/,
 
-  // Pattern 2: Slash-separated batches like: 23E11/23F11
+  // Pattern 2: Slash-separated batches like:  "L-18P1WPH532 23E11/23F11 (VNS) CR7"
   /^([LPT])-([A-Z0-9]+)\s+([\dA-Z\/]+)\s+\(([^)]+)\)\s+(.+)$/,
 
-  // Pattern 3: Comma-separated or space-separated batches
+  // Pattern 3: Comma-separated or space-separated batches like:  "L-18P1WPH532 23E11/23F11 (VNS) CR7"
   /^([LPT])-([A-Z0-9]+)\s+([\dA-Z,]+)\s+\(([^)]+)\)\s+(.+)$/,
 
   // Pattern 4: ALL BATCHES - e.g. L-20B1WCI531 PEC EL-1 Batch-1[ALL BATCHES] (RBT) CR10 also make venue optional for cases such as 5 th sem sat 12
   /^([LPT])-([A-Z0-9]+)[^\[\]()]*\[ALL BATCHES\]\s+\(([^)]+)\)(?:\s+(.+))?$/,
+
+  // Pattern 5: Bracketed batches, optionally with forgiving ALL BATCHES- prefix like:  P-25B1WCI571 PE[ALL BATCHES-23A11,23A14,23A15,23A17,23A18,23A19,23C11,23I11,23I12] (VNS) CL7
+  /^([LPT])-([A-Z0-9]+)\s+[^\[\]()]*\[(?:ALL[\s_-]BATCHES\s*-\s*)?([\dA-Z,\/]+)\]\s+\(([^)]+)\)\s+(.+)$/,
 ];
 
 export function findClassForBatch(

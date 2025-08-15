@@ -13,6 +13,7 @@ export default function DeviceRouter() {
     minor: searchParams.get("minor"),
   };
   const data = useTimetable(params.course, params.batch);
+  console.log(data);
 
   const isMobile = useIsMobile();
   if (isMobile == undefined || data == undefined) return <Loading />;
