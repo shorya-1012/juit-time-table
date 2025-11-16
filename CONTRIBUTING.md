@@ -3,8 +3,6 @@
 Thanks for considering contributing to the **JUIT Timetable** project!
 Whether you're fixing a bug, adding a feature, or improving the UI — you're welcome here.
 
----
-
 ## Project Setup
 
 ```bash
@@ -17,13 +15,10 @@ bun install
 
 # 3. Start the dev server
 bun run dev
+
+# for .env check the .env.example in the repo
 ```
 
-### Environment Setup
-
-Check the `.env.example` file and create your own `.env` with the required variables.
-
----
 
 ### Branch Naming
 
@@ -42,7 +37,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
 - `docs:` — Documentation changes
 - `refactor:` — Code refactoring (no behavior change)
 - `chore:` — Tooling or dependency updates
----
+
 
 ## ✅ Pull Request Checklist
 
@@ -54,27 +49,5 @@ Before submitting a pull request:
 - [ ] PR title and description are clear and concise.
 - [ ] Linked any related issues (e.g., `Fixes #123`).
 
----
-
-## Folder Structure (Brief)
-
-```
-components/        # UI components
-hooks/             # Custom React hooks
-lib/               # Utilities & helpers
-config/            # Static data like electives
-app/               # Route handlers (Next.js App Dir)
-```
-
----
-
-## Tips for Contributors
-
-- Use [Hero UI](https://www.heroui.com/) components when adding new UI.
-- Follow Tailwind CSS conventions for styling.
-- Keep business logic separate from UI where possible.
-- Unsure about something? Open a draft PR or ask in Discussions!
-
----
 
 Thanks for making this project better!
