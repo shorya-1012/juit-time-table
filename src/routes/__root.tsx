@@ -6,21 +6,21 @@ import { Provider } from '@/components/provider'
 
 export const Route = createRootRoute({
   component: () => (
-    <DefaultLayout>
-      <Provider themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+    <Provider themeProps={{ attribute: "class", defaultTheme: "system" }}>
+      <DefaultLayout>
         <Outlet />
-      </Provider>
-      <TanStackDevtools
-        config={{
-          position: 'bottom-right',
-        }}
-        plugins={[
-          {
-            name: 'Tanstack Router',
-            render: <TanStackRouterDevtoolsPanel />,
-          },
-        ]}
-      />
-    </DefaultLayout>
+        <TanStackDevtools
+          config={{
+            position: 'bottom-right',
+          }}
+          plugins={[
+            {
+              name: 'Tanstack Router',
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
+      </DefaultLayout>
+    </Provider>
   ),
 })

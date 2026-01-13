@@ -1,9 +1,14 @@
+import { CompactTimetable } from '@/components/compact-timetable'
+import { FUllTimetable } from '@/components/full-timetable'
+import { useIsMobile } from '@/hooks/use-mobile'
+import type { CourseKey } from '@/utils/constants'
 import { createFileRoute } from '@tanstack/react-router'
+
 
 export const Route = createFileRoute('/timetable')({
   validateSearch: (search: Record<string, unknown>) => {
     return {
-      course: search.course as string,
+      course: search.course as CourseKey,
       batch: search.batch as string,
     }
   },
@@ -11,5 +16,14 @@ export const Route = createFileRoute('/timetable')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/timetable"!</div>
+
+  const params = Route.useSearch()
+  const isMobile = useIsMobile()
+
+  if (isMobile == undefined) {
+    return ;
+  }
+
+  if ( isMobile ) return <CompactTimetable {...params} />
+  return <FUllTimetable />
 }
