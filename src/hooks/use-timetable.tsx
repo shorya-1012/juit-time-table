@@ -26,7 +26,7 @@ export function useCompactTimetable(course: CourseKey) {
     if (!course) return
 
     const fileName = TIMETABLE_FILE[course]
-    const url = `https://raw.githubusercontent.com/SurajKharkwal/juit-timetable/data/BTECH2SEM.json`
+    const url = `https://raw.githubusercontent.com/SurajKharkwal/juit-timetable/data/${fileName}`
 
     setState({
       data: null,
